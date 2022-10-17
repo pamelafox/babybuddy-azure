@@ -1,17 +1,8 @@
-@minLength(1)
-@maxLength(64)
-@description('Name to prefix all created resources')
-param name string = 'mybabybuddy'
-
-@minLength(1)
-@description('Location for all resources.')
-param location string = resourceGroup().location
-
-@description('Home IP address')
+param name string
 param homeIP string
-
 @secure()
 param databasePassword string
+param location string = resourceGroup().location
 
 var resourceToken = toLower(uniqueString(subscription().id, name, location))
 var containerAppName = '${name}-container-app'
@@ -200,3 +191,5 @@ resource postgresServer_FirewallIPAddress_2022_10_11_10_59_35 'Microsoft.DBforPo
     endIpAddress: homeIP
   }
 }
+
+output webUrl string = containerApp.properties.latestRevisionFqdn
