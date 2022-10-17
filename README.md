@@ -3,6 +3,8 @@
 Follow these instructions to deploy [babybuddy](https://github.com/babybuddy/babybuddy) to Azure,
 using Azure Container Apps and a free Azure account.
 
+## Using Azure CLI
+
 1. [Sign up for an Azure account](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
 2. [Install the Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
 3. Login using the Azure CLI on the command-line:
