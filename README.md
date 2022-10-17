@@ -52,10 +52,10 @@ Here's an example:
 
 ```
 az deployment sub create \
-  --name babybuddy-deploy-7 \
+  --name babybuddy-deploy1 \
   --location eastus \
   --template-file infra/main.bicep \
-  --parameters name=babybuddy7 location=eastus databasePassword=SuperDuperSecurePassword homeIP=74.212.134.255 \
+  --parameters name=babybuddy location=eastus databasePassword=SuperDuperSecurePassword homeIP=74.212.134.255 \
 ```
 
 You can also add `-c` to that command if you want to confirm what resources it will create first.
