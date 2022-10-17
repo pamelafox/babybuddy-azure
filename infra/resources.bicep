@@ -85,10 +85,6 @@ resource containerApp 'Microsoft.App/containerapps@2022-03-01' = {
               value: 'Europe/London'
             }
             {
-              name: 'CSRF_TRUSTED_ORIGINS'
-              value: 'http://127.0.0.1:8000'
-            }
-            {
               name: 'DB_ENGINE'
               value: 'django.db.backends.postgresql'
             }
