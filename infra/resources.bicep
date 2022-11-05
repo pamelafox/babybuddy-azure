@@ -130,7 +130,6 @@ resource postgresServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-01-20-pr
     version: '13'
     administratorLogin: 'bb_db_pg_admin'
     administratorLoginPassword: databasePassword
-    availabilityZone: '3'
     storage: {
       storageSizeGB: 128
     }
