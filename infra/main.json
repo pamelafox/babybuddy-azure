@@ -286,11 +286,5 @@
         }
       }
     }
-  ],
-  "outputs": {
-    "webUrl": {
-      "type": "string",
-      "value": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, format('{0}-resource-group', parameters('name'))), 'Microsoft.Resources/deployments', 'resources')).outputs.webUrl.value]"
-    }
-  }
+  ]
 }
