@@ -207,7 +207,6 @@
                 "version": "13",
                 "administratorLogin": "bb_db_pg_admin",
                 "administratorLoginPassword": "[parameters('databasePassword')]",
-                "availabilityZone": "3",
                 "storage": {
                   "storageSizeGB": 128
                 },
