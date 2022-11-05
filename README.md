@@ -10,7 +10,10 @@ click the link below and fill out the required fields:
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpamelafox%2Fbabybuddy-azure%2Fmain%2Finfra%2Fmain.json)
 
-That link will create a resource group with an Azure Container Apps environment and a Flexible PostGreSQL server.
+⚠️ If your deploy fails, it likely has to do with a resource not being available in a particular region.
+Try "West US", "Central US", "East US 2", or "Canada Central".
+
+That deployment will create a resource group with an Azure Container Apps environment and a Flexible PostGreSQL server.
 The container will be built from 'lscr.io/linuxserver/babybuddy:latest' and the database will be named "babybuddy".
 
 Once created, you can find its URL by navigating to the Azure Portal, finding the Container App resource,
