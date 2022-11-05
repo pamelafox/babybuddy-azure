@@ -18,14 +18,6 @@
       "maxLength": 64,
       "minLength": 1
     },
-    "location": {
-      "type": "string",
-      "defaultValue": "eastus",
-      "metadata": {
-        "description": "Primary location for all resources"
-      },
-      "minLength": 1
-    },
     "homeIP": {
       "type": "string",
       "metadata": {
@@ -33,32 +25,22 @@
       }
     },
     "databasePassword": {
-      "type": "secureString"
+      "type": "securestring"
     }
   },
   "resources": [
     {
-      "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2021-04-01",
-      "name": "[format('{0}-resource-group', parameters('name'))]",
-      "location": "[parameters('location')]"
-    },
-    {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2020-10-01",
       "name": "resources",
-      "resourceGroup": "[format('{0}-resource-group', parameters('name'))]",
       "properties": {
         "expressionEvaluationOptions": {
-          "scope": "inner"
+          "scope": "Inner"
         },
         "mode": "Incremental",
         "parameters": {
           "name": {
             "value": "[parameters('name')]"
-          },
-          "location": {
-            "value": "[parameters('location')]"
           },
           "homeIP": {
             "value": "[parameters('homeIP')]"
@@ -86,23 +68,20 @@
             },
             "databasePassword": {
               "type": "secureString"
-            },
-            "location": {
-              "type": "string",
-              "defaultValue": "[resourceGroup().location]"
             }
           },
           "variables": {
             "resourceToken": "[toLower(uniqueString(subscription().id, parameters('name'), parameters('location')))]",
             "containerAppName": "[format('{0}-container-app', parameters('name'))]",
-            "dbName": "[format('{0}-{1}-db', parameters('name'), variables('resourceToken'))]"
+            "dbName": "[format('{0}-{1}-db', parameters('name'), variables('resourceToken'))]",
+            "location": "[resourceGroup().location]"
           },
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/workspaces",
               "apiVersion": "2021-06-01",
               "name": "[format('{0}-workspace', parameters('name'))]",
-              "location": "[parameters('location')]",
+              "location": "[variables('location')]",
               "properties": {
                 "sku": {
                   "name": "pergb2018"
@@ -122,7 +101,7 @@
               "type": "Microsoft.App/managedEnvironments",
               "apiVersion": "2022-03-01",
               "name": "[format('{0}-container-env', parameters('name'))]",
-              "location": "[parameters('location')]",
+              "location": "[variables('location')]",
               "properties": {
                 "appLogsConfiguration": {
                   "destination": "log-analytics",
@@ -141,7 +120,7 @@
               "type": "Microsoft.App/containerApps",
               "apiVersion": "2022-03-01",
               "name": "[variables('containerAppName')]",
-              "location": "[parameters('location')]",
+              "location": "[variables('location')]",
               "identity": {
                 "type": "None"
               },
@@ -220,7 +199,7 @@
               "type": "Microsoft.DBforPostgreSQL/flexibleServers",
               "apiVersion": "2022-01-20-preview",
               "name": "[variables('dbName')]",
-              "location": "[parameters('location')]",
+              "location": "[variables('location')]",
               "sku": {
                 "name": "Standard_D2s_v3",
                 "tier": "GeneralPurpose"
@@ -305,10 +284,7 @@
             }
           }
         }
-      },
-      "dependsOn": [
-        "[subscriptionResourceId('Microsoft.Resources/resourceGroups', format('{0}-resource-group', parameters('name')))]"
-      ]
+      }
     }
   ],
   "outputs": {
