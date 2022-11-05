@@ -1,5 +1,5 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "metadata": {
     "_generator": {
@@ -71,17 +71,16 @@
             }
           },
           "variables": {
-            "resourceToken": "[toLower(uniqueString(subscription().id, parameters('name'), parameters('location')))]",
+            "resourceToken": "[toLower(uniqueString(subscription().id, parameters('name'), resourceGroup().location))]",
             "containerAppName": "[format('{0}-container-app', parameters('name'))]",
-            "dbName": "[format('{0}-{1}-db', parameters('name'), variables('resourceToken'))]",
-            "location": "[resourceGroup().location]"
+            "dbName": "[format('{0}-{1}-db', parameters('name'), variables('resourceToken'))]"
           },
           "resources": [
             {
               "type": "Microsoft.OperationalInsights/workspaces",
               "apiVersion": "2021-06-01",
               "name": "[format('{0}-workspace', parameters('name'))]",
-              "location": "[variables('location')]",
+              "location": "[resourceGroup().location]",
               "properties": {
                 "sku": {
                   "name": "pergb2018"
@@ -101,7 +100,7 @@
               "type": "Microsoft.App/managedEnvironments",
               "apiVersion": "2022-03-01",
               "name": "[format('{0}-container-env', parameters('name'))]",
-              "location": "[variables('location')]",
+              "location": "[resourceGroup().location]",
               "properties": {
                 "appLogsConfiguration": {
                   "destination": "log-analytics",
@@ -120,7 +119,7 @@
               "type": "Microsoft.App/containerApps",
               "apiVersion": "2022-03-01",
               "name": "[variables('containerAppName')]",
-              "location": "[variables('location')]",
+              "location": "[resourceGroup().location]",
               "identity": {
                 "type": "None"
               },
@@ -199,7 +198,7 @@
               "type": "Microsoft.DBforPostgreSQL/flexibleServers",
               "apiVersion": "2022-01-20-preview",
               "name": "[variables('dbName')]",
-              "location": "[variables('location')]",
+              "location": "[resourceGroup().location]",
               "sku": {
                 "name": "Standard_D2s_v3",
                 "tier": "GeneralPurpose"
