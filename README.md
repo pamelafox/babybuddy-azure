@@ -7,7 +7,7 @@ Enjoy tracking your bundle of joy/snot! 👶🏼
 
 ## Using Azure Portal
 
-🎥 [Watch a screencast of deployment with the Azure Portal]([https://studio.youtube.com/video/-4ln47lTuRw/edit](https://www.youtube.com/watch?v=-4ln47lTuRw))
+🎥 [Watch a screencast of deployment with the Azure Portal](https://www.youtube.com/watch?v=-4ln47lTuRw)
 
 1. [Sign up for a free Azure account](https://azure.microsoft.com/free/)
 2. Click the link below and fill out the required fields:
