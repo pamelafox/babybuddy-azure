@@ -1,7 +1,9 @@
 # Deploy babybuddy to Azure!
 
 Follow these instructions to deploy [babybuddy](https://github.com/babybuddy/babybuddy) to Azure,
-using Azure Container Apps and a free Azure account.
+using Azure Container Apps and a free Azure account. 
+
+Enjoy tracking your bundle of joy/snot! 👶🏼
 
 ## Using Azure Portal
 
@@ -21,8 +23,11 @@ using Azure Container Apps and a free Azure account.
 3. Once created, find the website URL by navigating to the Azure Portal, selecting the Container App resource,
 opening the Overview, and finding the "Application URL" on the right hand side.
 
-4. Now you can login using the default admin user password (admin/admin). Change that password immediately.
-Enjoy tracking your bundle of joy/snot! 👶🏼
+4. If you see an nginx error upon your first visit to the URL, just reload the page.
+
+6. Login using the default admin user password (admin/admin). Change that password immediately.
+
+
 
 ## Using Azure CLI
 
@@ -68,5 +73,6 @@ Enjoy tracking your bundle of joy/snot! 👶🏼
 5. Once deployed, find its URL by navigating to the Azure Portal, selecting the Container App resource,
 opening the Overview, and finding the "Application URL" on the right hand side.
 
-6. Now you can login using the default admin user password (admin/admin). Change that password immediately.
-Enjoy tracking your bundle of joy/snot! 👶🏼
+6. If you see an nginx error upon your first visit to the URL, just reload the page.
+
+7. Now you can login using the default admin user password (admin/admin). Change that password immediately.
