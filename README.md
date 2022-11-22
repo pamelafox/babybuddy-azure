@@ -10,7 +10,7 @@ click the link below and fill out the required fields:
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fpamelafox%2Fbabybuddy-azure%2Fmain%2Finfra%2Fmain.json)
 
-⚠️ If your deploy fails, it likely has to do with a resource not being available in a particular region.
+⚠️ If the deploy fails, it likely has to do with a resource not being available in the selected region.
 Try "West US", "Central US", "East US 2", or "Canada Central".
 
 That deployment will create a resource group with an Azure Container Apps environment and a Flexible PostGreSQL server.
