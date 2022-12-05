@@ -123,15 +123,15 @@ resource postgresServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-01-20-pr
   name: dbName
   location: location
   sku: {
-    name: 'Standard_D2s_v3'
-    tier: 'GeneralPurpose'
+    name: 'Standard_B1ms'
+    tier: 'Burstable'
   }
   properties: {
     version: '13'
     administratorLogin: 'bb_db_pg_admin'
     administratorLoginPassword: databasePassword
     storage: {
-      storageSizeGB: 128
+      storageSizeGB: 32
     }
     backup: {
       backupRetentionDays: 7
